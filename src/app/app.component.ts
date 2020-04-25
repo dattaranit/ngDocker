@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DockerService } from './docker.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Deploy Angular App to Docker and then to AKS';
+  constructor(private ds: DockerService) {
+  }
+
+  title = 'Deploy Angular App to Docker v2';
+
+  eventFunc() {
+    this.ds.getEmployees().subscribe((data) => {
+      alert(data);
+    });
+  };
 }
